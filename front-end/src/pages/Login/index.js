@@ -7,7 +7,13 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const simpleValidator = useRef(new SimpleReactValidator());
+  const simpleValidator = useRef(new SimpleReactValidator({
+    messages: {
+      email: 'Invalid mail',
+      min: 'Invalid password',
+    },
+  }));
+  const { errorEmail, errorPassword } = simpleValidator.current.fields;
   const history = useHistory();
 
   const sendForm = (e) => {
@@ -41,10 +47,12 @@ const Login = () => {
               onBlur={ () => simpleValidator.current.showMessageFor('errorPassword') }
             />
           </label>
-          { simpleValidator.current.message('errorPassword', password, 'required|min:5') }
+          { simpleValidator.current.message('errorPassword', password, 'required|min:6') }
         </div>
         <div className="btn-container">
-          <button type="submit" className="login-btn">Entrar</button>
+          { errorEmail && errorPassword
+            ? <button type="submit" className="login-btn">Entrar</button>
+            : <button type="submit" className="login-btn btn-fog" disabled>Entrar</button> }
           <Link className="go-register" to="/register">
             Ainda não tenho conta
           </Link>

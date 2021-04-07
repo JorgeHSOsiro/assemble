@@ -1,4 +1,4 @@
-.login-container {
+.register-container {
     color: cadetblue;
     border: 1px solid cadetblue;
     border-radius: 15px;
@@ -12,7 +12,6 @@
 }
 
 .form-content {
-    align-self: center;
     align-items: flex-start;
     display: flex;
     flex-direction: column;
@@ -23,15 +22,6 @@
 .title {
     margin-bottom: 35px;
 }
-
-.name-field {
-    margin-bottom: 25px;
-}
-
-.name-field input {
-    margin-left: 32px;
-}
-
 
 .email-field {
     margin-bottom: 25px;
@@ -49,8 +39,14 @@
     margin-left: 5px;
 }
 
-.register-btn {
-    align-self: flex-end;
+.btn-container {
+    display: flex;
+    margin-top: 25px;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.login-btn {
     background-color: cadetblue;
     border: 1px solid cadetblue;
     border-radius: 10px;
@@ -61,4 +57,10 @@
 
 .btn-fog {
     background-color: rgba(95, 158, 160, 0.5);
+}
+
+.go-register {
+    text-decoration: none;
+    color: cadetblue;
+    align-self: center;
 }
