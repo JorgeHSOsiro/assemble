@@ -6,6 +6,7 @@ const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmedPass, setConfirmedPass] = useState('');
 
   const history = useHistory();
 
@@ -50,7 +51,17 @@ const Register = () => {
             />
           </label>
         </div>
-        {name && email && password ? (
+        <div className="password-field">
+          <label htmlFor="password">
+            Confirm password:
+            <input
+              name="password"
+              type="password"
+              onChange={ (e) => setConfirmedPass(e.target.value) }
+            />
+          </label>
+        </div>
+        {name && email && password && confirmedPass ? (
           <button className="register-btn" type="button" onClick={ registerUser }>
             Send
           </button>
