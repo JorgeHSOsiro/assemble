@@ -1,11 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import SimpleReactValidator from 'simple-react-validator';
+import api from '../../services/userApi';
 import './style.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
   const simpleValidator = useRef(new SimpleReactValidator({
     messages: {
@@ -16,9 +18,15 @@ const Login = () => {
   const { errorEmail, errorPassword } = simpleValidator.current.fields;
   const history = useHistory();
 
+  const checkLogin = () => {
+    api.login(email, password).then((response) => {
+      localStorage.setItem('user', JSON.stringify(response.data));
+      history.push('/home');
+    }).catch(() => setMessage('Email not found!'));
+  };
   const sendForm = (e) => {
     e.preventDefault();
-    history.push('/home');
+    checkLogin();
   };
 
   return (
@@ -49,12 +57,15 @@ const Login = () => {
           </label>
           { simpleValidator.current.message('errorPassword', password, 'required|min:6') }
         </div>
+        <div className="notification-msg">
+          { message ? <p>{ message }</p> : '' }
+        </div>
         <div className="btn-container">
           { errorEmail && errorPassword
-            ? <button type="submit" className="login-btn">Entrar</button>
+            ? <button type="submit" className="login-btn">Login</button>
             : <button type="submit" className="login-btn btn-fog" disabled>Entrar</button> }
           <Link className="go-register" to="/register">
-            Ainda não tenho conta
+            Signup
           </Link>
         </div>
       </form>

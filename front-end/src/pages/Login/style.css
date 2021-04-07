@@ -62,3 +62,11 @@
 .btn-fog {
     background-color: rgba(95, 158, 160, 0.5);
 }
+
+.notification-msg {
+    background-color: rgba(255, 50, 50, 0.8);
+    color: white;
+    align-self: center;
+    border-radius: 5px;
+    width: 100%;
+}
