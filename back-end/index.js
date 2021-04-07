@@ -1,9 +1,14 @@
 const express = require('express');
+const cors = require('cors');
+
+const userRouter = require('./routers/userRouters');
 
 const app = express();
+const port = 3001;
 
-app.get('/', (req, res) => {
-  res.send('Hello world');
-});
+app.use(cors());
+app.use(express.json());
 
-app.listen(3000);
+app.use('/', userRouter);
+
+app.listen(port, () => console.log(`API rodando na porta ${port}`));
