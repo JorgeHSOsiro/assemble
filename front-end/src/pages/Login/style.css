@@ -1,5 +1,6 @@
 .login-container {
     color: cadetblue;
+    background-color: white;
     border: 1px solid cadetblue;
     border-radius: 15px;
     display: flex;
