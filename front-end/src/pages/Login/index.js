@@ -11,8 +11,8 @@ const Login = () => {
 
   const simpleValidator = useRef(new SimpleReactValidator({
     messages: {
-      email: 'Invalid mail',
-      min: 'Invalid password',
+      email: 'Invalid mail!',
+      required: 'Field is required!',
     },
   }));
   const { errorEmail, errorPassword } = simpleValidator.current.fields;
@@ -22,7 +22,7 @@ const Login = () => {
     api.login(email, password).then((response) => {
       localStorage.setItem('user', JSON.stringify(response.data));
       history.push('/home');
-    }).catch(() => setMessage('Email not found!'));
+    }).catch(() => setMessage('Email or password do not match'));
   };
   const sendForm = (e) => {
     e.preventDefault();
@@ -55,7 +55,7 @@ const Login = () => {
               onBlur={ () => simpleValidator.current.showMessageFor('errorPassword') }
             />
           </label>
-          { simpleValidator.current.message('errorPassword', password, 'required|min:6') }
+          { simpleValidator.current.message('errorPassword', password, 'required') }
         </div>
         <div className="notification-msg">
           { message ? <p>{ message }</p> : '' }
