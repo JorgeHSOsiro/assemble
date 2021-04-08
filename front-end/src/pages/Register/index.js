@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import api from '../../services/userApi';
 import './style.css';
 
 const Register = () => {
@@ -7,14 +8,16 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmedPass, setConfirmedPass] = useState('');
+  const [message, setMessage] = useState('');
 
   const history = useHistory();
 
   const registerUser = () => {
-    console.log(name);
-    console.log(email);
-    console.log(password);
-    history.push('/login');
+    api.register(name, email, password).then(() => {
+      history.push('/login');
+    }).catch(() => {
+      setMessage('E-mail already in database');
+    });
   };
 
   return (
@@ -60,6 +63,9 @@ const Register = () => {
               onChange={ (e) => setConfirmedPass(e.target.value) }
             />
           </label>
+        </div>
+        <div className="notification-msg">
+          { message ? <p>{ message }</p> : '' }
         </div>
         {name && email && password && confirmedPass ? (
           <button className="register-btn" type="button" onClick={ registerUser }>
