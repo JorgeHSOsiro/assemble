@@ -1,0 +1,25 @@
+.search-form {
+    display: flex;
+    justify-content: center;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-btn {
+    display: flex;
+    align-self: start;
+    height: 21px;
+    width: 29px;
+    background-color: #7086a7;
+    border: solid 1px #7086a7;
+    border-radius: 3px;
+}
+
+.search-icon {
+    display: flex;
+    align-self: center;
+    color: white;
+}

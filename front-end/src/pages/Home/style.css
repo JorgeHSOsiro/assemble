@@ -1,0 +1,11 @@
+.items-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 90%;
+    top: 160px;
+    margin: 10px auto;
+    border-radius: 10px;
+    border: solid 2px cadetblue;
+}

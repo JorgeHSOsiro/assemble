@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 import { BsJustify } from 'react-icons/bs';
 import './style.css';
 
 import ElementsMenu from './ElementsMenu';
+import SearchBar from '../searchBar';
 
 function renderTopMenu(openMenu, setOpenMenu) {
   return openMenu === true ? setOpenMenu(false) : setOpenMenu(true);
 }
 
-function Menu({ title }) {
+function Menu() {
   const [openMenu, setOpenMenu] = useState(false);
   return (
     <header className="header-content">
       <div className="header-title">
-        <h2>{`${title}`}</h2>
+        <SearchBar />
       </div>
       <div className="header-back">
         <div className="header-icon">
@@ -31,9 +31,5 @@ function Menu({ title }) {
     </header>
   );
 }
-
-Menu.propTypes = {
-  title: PropTypes.string.isRequired,
-};
 
 export default Menu;
