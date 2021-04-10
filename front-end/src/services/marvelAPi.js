@@ -10,9 +10,9 @@ const fetchMarvel = async (option, search) => {
   const ts = new Date();
   const hash = md5(ts + PRIVATE_KEY + PUBLIC_KEY).toString();
   if (option === 'comics') {
-    return fetch(`${marvelApi}/${option}?title=${search}&ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
+    return fetch(`${marvelApi}/${option}?titleStartsWith=${search}&ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
   }
-  return fetch(`${marvelApi}/${option}?name=${search}&ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
+  return fetch(`${marvelApi}/${option}?nameStartsWith=${search}&ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
 };
 
 export default fetchMarvel;
