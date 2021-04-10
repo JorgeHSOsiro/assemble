@@ -1,8 +1,7 @@
 .items-container {
     position: relative;
     display: flex;
-    justify-content: center;
-    align-self: center;
+    flex-wrap: wrap;
     width: 90%;
     top: 160px;
     margin: 10px auto;
