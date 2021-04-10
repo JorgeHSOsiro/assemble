@@ -11,8 +11,10 @@ const Home = () => {
   const [resultArray, setResultArray] = useState([]);
   const { search, subject } = useContext(heroesContext);
 
+  const ZERO = 0;
+
   useEffect(() => {
-    if (subject) {
+    if (subject && search) {
       fetchMarvel(subject, search)
         .then((response) => response.json())
         .then((res) => setResultArray(res.data.results));
@@ -22,23 +24,32 @@ const Home = () => {
   return (
     <div>
       <Menu />
-      <div className="items-container">
-        {subject === 'comics'
-          ? resultArray.map((comics) => (
-            <MarvelCards
-              key={ comics.id }
-              img={ comics.thumbnail.path }
-              title={ comics.title }
-            />
-          ))
-          : resultArray.map((char) => (
-            <MarvelCards
-              key={ char.id }
-              img={ char.thumbnail.path }
-              title={ char.name }
-            />
-          ))}
-      </div>
+      {(!subject && !search) || resultArray.length === ZERO ? (
+        <div className="error-container">
+          <h1>Nothing to show here!</h1>
+          <h2>Hints</h2>
+          <p>Some hero names requires a hífen(-). Example spider-man</p>
+          <p>Others just an empty space should do the work. Example natasha romanoff</p>
+        </div>
+      ) : (
+        <div className="items-container">
+          {subject === 'comics'
+            ? resultArray.map((comics) => (
+              <MarvelCards
+                key={ comics.id }
+                img={ comics.thumbnail.path }
+                title={ comics.title }
+              />
+            ))
+            : resultArray.map((char) => (
+              <MarvelCards
+                key={ char.id }
+                img={ char.thumbnail.path }
+                title={ char.name }
+              />
+            ))}
+        </div>
+      )}
     </div>
   );
 };
