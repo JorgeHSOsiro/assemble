@@ -15,7 +15,8 @@ function App() {
         <Route path="/login" component={ Login } />
         <Route path="/home" component={ Home } />
         <Route path="/register" component={ Register } />
-        <Route path="/details/:id" component={ DetailsPage } />
+        <Route path="/character/:id" component={ DetailsPage } />
+        <Route path="/details/:subject/:id" component={ DetailsPage } />
       </Switch>
     </Provider>
   );

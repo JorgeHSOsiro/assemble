@@ -4,15 +4,17 @@ require('dotenv').config();
 
 const PUBLIC_KEY = process.env.REACT_APP_PUBLICKEY;
 const PRIVATE_KEY = process.env.REACT_APP_PRIVATEKEY;
+const marvelApi = 'http://gateway.marvel.com/v1/public';
+const ts = new Date();
+const hash = md5(ts + PRIVATE_KEY + PUBLIC_KEY).toString();
 
 const fetchMarvel = async (option, search) => {
-  const marvelApi = 'http://gateway.marvel.com/v1/public';
-  const ts = new Date();
-  const hash = md5(ts + PRIVATE_KEY + PUBLIC_KEY).toString();
   if (option === 'comics') {
-    return fetch(`${marvelApi}/${option}?titleStartsWith=${search}&ts=${ts}&orderBy=title&apikey=${PUBLIC_KEY}&hash=${hash}`);
+    return fetch(`${marvelApi}/${option}?titleStartsWith=${search}&ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
   }
-  return fetch(`${marvelApi}/${option}?nameStartsWith=${search}&ts=${ts}&orderBy=name&apikey=${PUBLIC_KEY}&hash=${hash}`);
+  return fetch(`${marvelApi}/${option}?nameStartsWith=${search}&ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
 };
 
-export default fetchMarvel;
+const fetchDetails = async (id, subject) => fetch(`${marvelApi}/${subject}/${id}?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
+
+export default { fetchMarvel, fetchDetails };

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Menu from '../../components/Menu';
 import heroesContext from '../../context/heroesContext';
-import fetchMarvel from '../../services/marvelAPi';
+import marvelApi from '../../services/marvelAPi';
 import MarvelCards from '../../components/Cards/MarvelCards';
 import './style.css';
 
@@ -15,7 +15,7 @@ const Home = () => {
 
   useEffect(() => {
     if (subject && search) {
-      fetchMarvel(subject, search)
+      marvelApi.fetchMarvel(subject, search)
         .then((response) => response.json())
         .then((res) => setResultArray(res.data.results));
     }
@@ -40,6 +40,7 @@ const Home = () => {
                 img={ comics.thumbnail.path }
                 title={ comics.title }
                 id={ comics.id }
+                type={ subject }
               />
             ))
             : resultArray.map((char) => (
@@ -48,6 +49,7 @@ const Home = () => {
                 img={ char.thumbnail.path }
                 title={ char.name }
                 id={ char.id }
+                type={ subject }
               />
             ))}
         </div>

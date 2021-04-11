@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './style.css';
 
-const MarvelCards = ({ img, title, id }) => (
+const MarvelCards = ({
+  img, title, id, type,
+}) => (
   <div className="card-container">
-    <Link to={ `/details/${id}` }>
+    <Link to={ `/details/${type}/${id}` }>
       <img className="card-img" src={ `${img}/portrait_medium.jpg` } alt="imagem" />
     </Link>
     <p className="card-title">{ title }</p>
@@ -17,6 +19,7 @@ MarvelCards.propTypes = {
   img: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default MarvelCards;
