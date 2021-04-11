@@ -39,6 +39,7 @@ const Home = () => {
                 key={ comics.id }
                 img={ comics.thumbnail.path }
                 title={ comics.title }
+                id={ comics.id }
               />
             ))
             : resultArray.map((char) => (
@@ -46,6 +47,7 @@ const Home = () => {
                 key={ char.id }
                 img={ char.thumbnail.path }
                 title={ char.name }
+                id={ char.id }
               />
             ))}
         </div>
