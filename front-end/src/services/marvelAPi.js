@@ -17,4 +17,11 @@ const fetchMarvel = async (option, search) => {
 
 const fetchDetails = async (id, subject) => fetch(`${marvelApi}/${subject}/${id}?ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
 
-export default { fetchMarvel, fetchDetails };
+const fetchDetailsBy = async (id, subject, name, option) => {
+  if (option === 'comics') {
+    return fetch(`${marvelApi}/${subject}/${id}/${option}?title=${name}&ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
+  }
+  return fetch(`${marvelApi}/${subject}/${id}/${option}?name=${name}&ts=${ts}&apikey=${PUBLIC_KEY}&hash=${hash}`);
+};
+
+export default { fetchMarvel, fetchDetails, fetchDetailsBy };

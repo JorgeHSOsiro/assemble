@@ -11,7 +11,7 @@ const DetailsPage = () => {
   const { id, subject } = useParams();
 
   useEffect(async () => {
-    await marvelAPi
+    marvelAPi
       .fetchDetails(id, subject)
       .then((response) => response.json())
       .then((res) => res.data.results[0]).then((hero) => {

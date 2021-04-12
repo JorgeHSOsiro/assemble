@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import DetailsPage from './pages/DetailsPage';
 import Provider from './context/provider';
+import DetailsPageBy from './pages/DetailsPageBy';
 import './App.css';
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
         <Route path="/home" component={ Home } />
         <Route path="/register" component={ Register } />
         <Route path="/character/:id" component={ DetailsPage } />
-        <Route path="/details/:subject/:id" component={ DetailsPage } />
+        <Route exact path="/details/:subject/:id" component={ DetailsPage } />
+        <Route exact path="/details/:subject/:id/:option/:name" component={ DetailsPageBy } />
       </Switch>
     </Provider>
   );
