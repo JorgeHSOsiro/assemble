@@ -12,7 +12,6 @@ const validateUser = async (req, res, next) => {
     const { password: _, ...userSafe } = user;
 
     req.token = auth.createToken(userSafe);
-
     req.user = userSafe;
     next();
   } catch (error) {

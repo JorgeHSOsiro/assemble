@@ -21,6 +21,7 @@ const Login = () => {
   const checkLogin = () => {
     api.login(email, password).then((response) => {
       localStorage.setItem('user', JSON.stringify(response.data));
+      console.log(response);
       history.push('/home');
     }).catch(() => setMessage('Email or password do not match'));
   };
