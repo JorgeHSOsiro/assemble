@@ -3,6 +3,7 @@ import Menu from '../../components/Menu';
 import heroesContext from '../../context/heroesContext';
 import marvelApi from '../../services/marvelAPi';
 import MarvelCards from '../../components/Cards/MarvelCards';
+import helper from '../../helper/variables';
 import './style.css';
 
 require('dotenv').config();
@@ -10,8 +11,6 @@ require('dotenv').config();
 const Home = () => {
   const [resultArray, setResultArray] = useState([]);
   const { search, subject } = useContext(heroesContext);
-
-  const ZERO = 0;
 
   useEffect(() => {
     if (subject && search) {
@@ -24,7 +23,7 @@ const Home = () => {
   return (
     <div>
       <Menu />
-      {(!subject && !search) || resultArray.length === ZERO ? (
+      {(!subject && !search) || resultArray.length === helper.ZERO ? (
         <div className="error-container">
           <h1>Nothing to show here!</h1>
           <h2>Hints</h2>

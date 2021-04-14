@@ -21,7 +21,6 @@ const Login = () => {
   const checkLogin = () => {
     api.login(email, password).then((response) => {
       localStorage.setItem('user', JSON.stringify(response.data));
-      console.log(response);
       history.push('/home');
     }).catch(() => setMessage('Email or password do not match'));
   };
@@ -41,7 +40,7 @@ const Login = () => {
               name="email"
               type="email"
               onChange={ (e) => setEmail(e.target.value) }
-              onBlur={ () => simpleValidator.current.showMessageFor('errorEmail') }
+              onBlur={ simpleValidator.current.showMessageFor('errorEmail') }
             />
           </label>
           { simpleValidator.current.message('errorEmail', email, 'required|email') }
@@ -53,7 +52,7 @@ const Login = () => {
               name="password"
               type="password"
               onChange={ (e) => setPassword(e.target.value) }
-              onBlur={ () => simpleValidator.current.showMessageFor('errorPassword') }
+              onBlur={ simpleValidator.current.showMessageFor('errorPassword') }
             />
           </label>
           { simpleValidator.current.message('errorPassword', password, 'required') }
@@ -64,7 +63,7 @@ const Login = () => {
         <div className="btn-container">
           { errorEmail && errorPassword
             ? <button type="submit" className="login-btn">Login</button>
-            : <button type="submit" className="login-btn btn-fog" disabled>Entrar</button> }
+            : <button type="submit" className="login-btn btn-fog" disabled>Login</button> }
           <Link className="go-register" to="/register">
             Signup
           </Link>

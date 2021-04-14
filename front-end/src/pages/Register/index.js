@@ -42,7 +42,7 @@ const Register = () => {
               name="name"
               type="name"
               onChange={ (e) => setName(e.target.value) }
-              onBlur={ () => simpleValidator.current.showMessageFor('errorName') }
+              onBlur={ simpleValidator.current.showMessageFor('errorName') }
             />
           </label>
           {simpleValidator.current.message('errorName', name, 'required')}
@@ -54,7 +54,7 @@ const Register = () => {
               name="email"
               type="email"
               onChange={ (e) => setEmail(e.target.value) }
-              onBlur={ () => simpleValidator.current.showMessageFor('errorEmail') }
+              onBlur={ simpleValidator.current.showMessageFor('errorEmail') }
             />
           </label>
           {simpleValidator.current.message('errorEmail', email, 'required|email')}
@@ -66,7 +66,7 @@ const Register = () => {
               name="password"
               type="password"
               onChange={ (e) => setPassword(e.target.value) }
-              onBlur={ () => simpleValidator.current.showMessageFor('errorPassword') }
+              onBlur={ simpleValidator.current.showMessageFor('errorPassword') }
             />
           </label>
           { simpleValidator.current.message('errorPassword', password, 'required|min:6') }
