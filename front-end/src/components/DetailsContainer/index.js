@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { BsArrowLeftShort, BsStar, BsStarFill } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 import constant from '../../helper/variables';
+import apiChar from '../../services/characterApi';
+import apiCom from '../../services/comicsApi';
 import './style.css';
 
 const DetailsContainer = ({
@@ -24,10 +26,19 @@ const DetailsContainer = ({
     }
   }, []);
 
+  const directToApi = (sub) => {
+    if (subject === 'characters') {
+      apiChar.favoriteCharacter(sub);
+    } else {
+      apiCom.favoriteComics(sub);
+    }
+  };
+
   const selectFavorite = (option) => {
     if (option) {
       return setFavorite(false);
     }
+    directToApi(title);
     return setFavorite(true);
   };
 

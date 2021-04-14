@@ -18,7 +18,6 @@ function App() {
         <Route path="/home" component={ Home } />
         <Route path="/register" component={ Register } />
         <Route path="/profile" component={ Profile } />
-        <Route path="/character/:id" component={ DetailsPage } />
         <Route exact path="/details/:subject/:id" component={ DetailsPage } />
         <Route exact path="/details/:subject/:id/:option/:name" component={ DetailsPageBy } />
       </Switch>
