@@ -7,6 +7,7 @@ import DetailsPage from './pages/DetailsPage';
 import Provider from './context/provider';
 import DetailsPageBy from './pages/DetailsPageBy';
 import Profile from './pages/Profile';
+import Favorite from './pages/FavoritesPage';
 import './App.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/home" component={ Home } />
         <Route path="/register" component={ Register } />
         <Route path="/profile" component={ Profile } />
+        <Route path="/favorites" component={ Favorite } />
         <Route exact path="/details/:subject/:id" component={ DetailsPage } />
         <Route exact path="/details/:subject/:id/:option/:name" component={ DetailsPageBy } />
       </Switch>

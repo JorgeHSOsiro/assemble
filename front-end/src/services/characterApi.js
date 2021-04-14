@@ -5,7 +5,9 @@ const api = axios.create({
 });
 
 const favoriteCharacter = (name) => api.post('/character', { name });
+const getAllCharacters = () => api.get('/favorite/character');
 
 export default {
   favoriteCharacter,
+  getAllCharacters,
 };

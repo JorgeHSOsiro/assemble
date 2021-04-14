@@ -6,6 +6,7 @@ function ElementsMenu() {
   return (
     <div className="side-menu-container">
       {Buttons('Meu perfil', '/profile')}
+      {Buttons('Favorites', '/favorites')}
       {Buttons('Sair', '/login')}
     </div>
   );
