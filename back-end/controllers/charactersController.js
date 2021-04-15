@@ -11,11 +11,12 @@ const getAllCharacters = async (_req, res) => {
 
 const favoriteChar = async (req, res) => {
   try {
-    const { name } = req.body;
+    const { name, idChar } = req.body;
     const exists = await characters.findOne({ where: { name } });
     if (exists) throw new Error('Characters already in favorited');
     const favorite = await characters.create({
       name,
+      idChar,
     });
     return res.status(200).json(favorite);
   } catch (error) {

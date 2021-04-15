@@ -3,6 +3,7 @@ const Characters = (sequelize, DataTypes) => {
     'characters',
     {
       name: DataTypes.STRING,
+      idChar: DataTypes.STRING,
     },
     {
       timestamps: false,

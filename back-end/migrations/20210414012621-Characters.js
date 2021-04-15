@@ -11,6 +11,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      idChar: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
     }),
 
   down: async (queryInterface, _Sequelize) => queryInterface.dropTable('characters'),

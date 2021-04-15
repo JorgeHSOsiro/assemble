@@ -7,13 +7,19 @@ const FavCharacters = () => {
     api.getAllCharacters().then((response) => {
       setCharacters(response.data);
     });
-  });
+  }, []);
 
   return (
     <div>
       <h1>Characters</h1>
       {characters.map((item) => (
-        <p key={ item.id }>{item.name}</p>
+        <a
+          className="char-info1"
+          href={ `/details/characters/${item.idChar}` }
+          key={ item.idChar }
+        >
+          <p>{item.name}</p>
+        </a>
       ))}
     </div>
   );

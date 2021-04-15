@@ -4,8 +4,8 @@ const api = axios.create({
   baseURL: 'http://localhost:3001',
 });
 
-const favoriteCharacter = (name) => api.post('/character', { name });
-const getAllCharacters = () => api.get('/favorite/character');
+const favoriteCharacter = (name, idChar) => api.post('/character', { name, idChar });
+const getAllCharacters = () => api.get('/favorites/characters');
 
 export default {
   favoriteCharacter,

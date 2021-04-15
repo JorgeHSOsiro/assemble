@@ -11,11 +11,12 @@ const getAllComics = async (_req, res) => {
 
 const favoriteComics = async (req, res) => {
   try {
-    const { title } = req.body;
+    const { title, idCom } = req.body;
     const exists = await comics.findOne({ where: { title } });
     if (exists) throw new Error('Comics already in favorited');
     const favorite = await comics.create({
       title,
+      idCom,
     });
     return res.status(200).json(favorite);
   } catch (error) {

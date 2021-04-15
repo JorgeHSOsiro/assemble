@@ -26,11 +26,11 @@ const DetailsContainer = ({
     }
   }, []);
 
-  const directToApi = (sub) => {
+  const directToApi = async (sub, num) => {
     if (subject === 'characters') {
-      apiChar.favoriteCharacter(sub);
+      await apiChar.favoriteCharacter(sub, num);
     } else {
-      apiCom.favoriteComics(sub);
+      await apiCom.favoriteComics(sub, num);
     }
   };
 
@@ -38,7 +38,7 @@ const DetailsContainer = ({
     if (option) {
       return setFavorite(false);
     }
-    directToApi(title);
+    directToApi(title, id);
     return setFavorite(true);
   };
 

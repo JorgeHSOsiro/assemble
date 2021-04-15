@@ -3,6 +3,7 @@ const Comics = (sequelize, DataTypes) => {
     'comics',
     {
       title: DataTypes.STRING,
+      idCom: DataTypes.STRING,
     },
     {
       timestamps: false,
